@@ -14,18 +14,17 @@ const Navbar = () => {
 
         {/* Desktop view */}
         <div className='hidden md:flex items-center gap-5 text-gray-500'>
-          <div>
+          <div className='flex items-center gap-5'>
             <button>Become Educator</button>
-            <Link to="/my-enrollments">My Enrollments</Link>
+            | <Link to="/my-enrollments">My Enrollments</Link>
           </div>
           <button className='bg-blue-600 text-white py-2 px-5 rounded-full'>Create Account</button>
         </div>
 
         {/* Mobile view */}
-        <div>
+        <div className='md:hidden'>
 
-        </div>
-        
+        </div>  
     </div>
   )
 }

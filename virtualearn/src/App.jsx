@@ -15,11 +15,16 @@ import StudentsEnrolled from './pages/educator/StudentsEnrolled'
 import Navbar from './components/student/Navbar'
 
 const App = () => {
+
+  // If educator Route then show educator navbar
+  const isEducatorRoute = window.location.pathname.startsWith('/educator');
+
   return (
-    <div>
+    <div className='min-h-screen text-default bg-white'>
       
-      {/* Navbar at all pages */}
-      <Navbar/>
+      {/* Navbar at all Student's pages */}
+      {!isEducatorRoute && <Navbar/>}
+      {/* <Navbar/> */}
       <Routes>
 
         {/* Student's Routes  */}
@@ -33,7 +38,7 @@ const App = () => {
 
         {/* Educator's Routes */}
         <Route path='/educator' element={<Educator/>}>
-        <Route path='educator' element={<Dashboard/>}/>
+        <Route index element={<Dashboard/>}/>
         <Route path="add-course" element={<AddCourse />} /> 
         <Route path='my-courses' element={<MyCourses/>}/>
         <Route path='students-enrolled' element={<StudentsEnrolled/>}/>
