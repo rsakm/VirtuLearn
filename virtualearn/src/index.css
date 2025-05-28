@@ -9,13 +9,17 @@
         --text-course-details-heading-small:26px;
         --leading-course-details-heading-small:36px;
         --text-course-details-heading-large:36px;
-        --leading-course-details-heading-large:44px
+        --leading-course-details-heading-large:44px;
         --text-home-heading-small : 28px;
         --leading-home-heading-small : 34px;
         --text-home-heading-large : 48px;
         --leading-home-heading-large : 56px;
         --text-default:15px;
         --leading-default:21px;
+
+        /* Custom styles for grid templates of courses cards */
+        /* grid template columns */
+        --grid-template-columns-auto: repeat(auto-fit, minmax(200px, 1fr));
     
 }
 
