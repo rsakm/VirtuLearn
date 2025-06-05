@@ -12,6 +12,7 @@ export const AppContextProvider = (props)=>{
 
     const [allCourses, setAllCourses] = React.useState([]);
 
+    const [isEducator, setIsEducator] = React.useState(true);
     // fetch all courses
     const fetchAllCourses = async () => {
 
@@ -49,7 +50,9 @@ export const AppContextProvider = (props)=>{
         currency, 
         allCourses,
         navigate,
-        calculateRating
+        calculateRating,
+        isEducator,
+        setIsEducator
 
     }
     return(

@@ -9,7 +9,7 @@ import { useClerk, useUser, UserButton } from '@clerk/clerk-react';
 import { AppContext } from '../../context/AppContext';
 
 const Navbar = () => {
-  const {navigate} = useContext(AppContext);
+  const {navigate, isEducator, setIsEducator} = useContext(AppContext);
 
   const isCourseListPage = window.location.pathname.includes('/course-list');
 
@@ -26,7 +26,7 @@ const Navbar = () => {
 
             {/* if user is logged in then show become educator button and my enrollments button */}
            { user && <>
-            <button>Become Educator</button>
+            <button onClick={()=>navigate('/educator')}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
             | <Link to="/my-enrollments">My Enrollments</Link>
             </>
             }
@@ -43,7 +43,7 @@ const Navbar = () => {
             
             {
             user && <>
-            <button>Become Educator</button>
+            <button onClick={()=>navigate('/educator')}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
             | <Link to="/my-enrollments">My Enrollments</Link>
             </>
             }
