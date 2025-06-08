@@ -1,11 +1,70 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { AppContext } from '../../context/AppContext';
+import Loading from '../../components/student/Loading';
+import { assets } from '../../assets/assets';
+
 
 const CourseDetails = () => {
-  return (
-    <div>
-        <h1>Course Details</h1>
+
+  const {id} = useParams();
+  const [courseData, setCourseData] = useState(null);
+
+  const {allCourses, calculateRating} = useContext(AppContext);
+
+  const fetchCourseData = async ()=>{
+    const findCourse = allCourses.find((course) => course._id === id)
+    setCourseData(findCourse);
+  } 
+
+  useEffect(()=>{
+    fetchCourseData();
+  },[]);
+
+  return courseData? (
+  <>
+    <div className='flex flex-col-reverse md:flex-row gap-10 relative items-start justify-between md:px-36 px-8 md:pt-30 pt-20 text-left'>
+
+      {/* Gradient color */}
+      <div className='absolute top-0 left-0 w-full h-section-height -z-[-1] bg-gradient-to-b from-cyan-100/70'>
+
+      </div>
+
+  
+        {/* Left column */}
+        <div className='max-w-xl z-10 text-gray-500'>
+          <h1 className='md:text-course-details-heading-large text-course-details-heading-small font-semibold text-gray-800'>{courseData.courseTitle}</h1>
+          <p className='pt-4 text-sm md:text-base' dangerouslySetInnerHTML={{__html: courseData.courseDescription.slice(0,200)}}></p>
+
+
+          {/* review and rating */}
+          <div className='flex pt-3 pb-1 text-sm items-center space-x-2 '>
+            <p>{calculateRating(courseData)}</p>
+            <div className='flex '>
+              {[...Array(5)].map((_, index) => (
+                // <span key={index}>&#9733;</span>
+
+                <img key={index} src={index < Math.floor(calculateRating(courseData)) ? assets.star : assets.star_blank} alt="star" className='w-3.5 h-3.5' />
+              ))}
+            </div>
+            <p className='text-blue-600'>({courseData.courseRatings.length} {courseData.courseRatings.length > 1 ? 'ratings':'rating'}) </p>
+
+            {/* Total number of enrolled students */}
+            <p>{courseData.enrolledStudents.length} {courseData.enrolledStudents.length > 1 ?'students' : 'student'} </p>
+          </div>
+
+          <p className='text-sm' >Course by <span className='text-blue-600 underline'>Rajshree</span></p>
+
+        </div>
+
+        {/* Right column */}
+        <div>
+
+        </div>
+      
     </div>
-  )
+    </>
+  ):<Loading/>
 }
 
 export default CourseDetails

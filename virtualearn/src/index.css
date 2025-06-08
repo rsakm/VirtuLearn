@@ -20,8 +20,16 @@
         /* Custom styles for grid templates of courses cards */
         /* grid template columns */
         --grid-template-columns-auto: repeat(auto-fit, minmax(200px, 1fr));
+
+
+        --spacing-section-height: 500px;
+       
     
 }
+
+/* :root {
+  
+} */
 
 *{
     font-family: Outfit;
