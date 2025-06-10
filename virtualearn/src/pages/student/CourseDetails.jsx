@@ -59,6 +59,7 @@ const CourseDetails = () => {
 
         {/* Right column */}
         <div>
+          
 
         </div>
       
