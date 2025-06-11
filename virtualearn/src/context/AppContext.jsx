@@ -68,7 +68,16 @@ export const AppContextProvider = (props)=>{
     }
 
     // function to No of lectures in a course
-    
+    const calculateNoOfLectures = (course)=>{
+        let count = 0;
+        course.courseContent.forEach((chapter) => {
+            if(Array.isArray(chapter.chapterContent)){
+                count += chapter.chapterContent.length;
+            }
+        });
+
+        return count;
+    }
 
     const value = {
         currency, 
