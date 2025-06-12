@@ -85,7 +85,10 @@ export const AppContextProvider = (props)=>{
         navigate,
         calculateRating,
         isEducator,
-        setIsEducator
+        setIsEducator,
+        calculateCHapterTime,
+        calculateCourseDuration,
+        calculateNoOfLectures
 
     }
     return(
