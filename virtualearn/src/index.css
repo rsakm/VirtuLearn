@@ -23,6 +23,10 @@
 
 
         --spacing-section-height: 500px;
+
+        --shadow-custom-card: 0px 4px 15px 2px rgba(0,0,0,0.1);
+
+        
        
     
 }
@@ -95,6 +99,10 @@
 
 .rich-text li {
   margin-bottom: 8px;
+}
+
+.course-card{
+  max-width:  424px; 
 }
 
 /* :root {
