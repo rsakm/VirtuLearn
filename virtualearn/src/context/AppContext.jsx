@@ -1,4 +1,4 @@
-import React, {createContext} from 'react'
+import React, {createContext, useState} from 'react'
 import { dummyCourses } from '../assets/assets';
 import { useNavigate } from 'react-router-dom';
 import humanizeDuration from 'humanize-duration';
@@ -14,6 +14,8 @@ export const AppContextProvider = (props)=>{
     const [allCourses, setAllCourses] = React.useState([]);
 
     const [isEducator, setIsEducator] = React.useState(true);
+    const [enrolledCourse, setEnrolledCoursers] = useState([]);
+
     // fetch all courses
     const fetchAllCourses = async () => {
 
