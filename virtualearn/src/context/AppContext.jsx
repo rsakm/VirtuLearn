@@ -30,9 +30,7 @@ export const AppContextProvider = (props)=>{
         }
       };
 
-      React.useEffect(() => {
-        fetchAllCourses();
-      }, []);
+     
 
 
     //   Function to calculate the average rating of course
@@ -81,6 +79,18 @@ export const AppContextProvider = (props)=>{
         return count;
     }
 
+    // fetch user enrolled courses 
+    const fetchUserEnrolledCourses = async () => {
+        setEnrolledCoursers(dummyCourses);
+    }
+
+ React.useEffect(() => {
+        fetchAllCourses();
+        fetchUserEnrolledCourses();
+      }, []);
+
+
+
     const value = {
         currency, 
         allCourses,
@@ -90,7 +100,8 @@ export const AppContextProvider = (props)=>{
         setIsEducator,
         calculateCHapterTime,
         calculateCourseDuration,
-        calculateNoOfLectures
+        calculateNoOfLectures,
+        enrolledCourse, fetchUserEnrolledCourses
 
     }
     return(

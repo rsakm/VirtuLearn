@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../../context/AppContext'
 
 const MyEnrollments = () => {
+
+  const {enrolledCourses, calculateCourseDuration} = useContext(AppContext);
+
   return (
     <>
     <div className='px-8 md:px-36 pt-10'>
@@ -15,6 +19,30 @@ const MyEnrollments = () => {
 
             </tr>
           </thead>
+          <tbody>
+            {
+              enrolledCourses.map((course, index) =>(
+                <tr key={index}>
+                  <td>
+                    <img src={course.courseThumbnail} alt="" className='w-14 sm:w-24 md:w-28' />
+                    <div>
+                      <p>{course.courseTitle} </p>
+
+                    </div>
+                  </td>
+                  <td>
+                    <p>{calculateCourseDuration(course)}</p>
+                  </td>
+                  <td>
+                    4 / 10 <span>Lectures</span>
+                  </td>
+                  <td>
+                    <button>On Going</button>
+                  </td>
+                </tr>
+              )) }
+                
+          </tbody>
         </table>
     </div>
     </>
